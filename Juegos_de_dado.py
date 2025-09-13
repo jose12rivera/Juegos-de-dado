@@ -5,7 +5,7 @@ import random
 class DiceGameApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("🎲 Juego de Dado (probabilidades inversas)")
+        self.title("?? Juego de Dado (probabilidades inversas)")
         self.state("zoomed")  
         self.configure(bg="#1E1E2F")  
 
@@ -30,7 +30,7 @@ class DiceGameApp(tk.Tk):
         left = ttk.Frame(self, padding=10)
         left.place(x=20, y=20, width=400, height=700)
 
-        ttk.Label(left, text="➕ Añadir / Apostar", font=("Segoe UI", 14, "bold"), foreground="#FFD700").pack(anchor="w")
+        ttk.Label(left, text="? Añadir / Apostar", font=("Segoe UI", 14, "bold"), foreground="#FFD700").pack(anchor="w")
 
         frm = ttk.Frame(left)
         frm.pack(fill="x", pady=8)
@@ -45,15 +45,15 @@ class DiceGameApp(tk.Tk):
         spin = ttk.Spinbox(frm, from_=1, to=6, textvariable=self.numero_var, width=5)
         spin.grid(row=1, column=1, sticky="w", padx=6, pady=(6,0))
 
-        ttk.Button(left, text="🎯 Apostar / Registrar", command=self.apostar).pack(pady=10, fill="x")
+        ttk.Button(left, text="?? Apostar / Registrar", command=self.apostar).pack(pady=10, fill="x")
         self.jugadores_list = tk.Listbox(left, height=12, bg="#2E2E3E", fg="white", font=("Segoe UI", 11))
         self.jugadores_list.pack(fill="both", pady=6, expand=False)
-        ttk.Button(left, text="🔄 Resetear ronda", command=self.resetear_ronda).pack(pady=6, fill="x")
+        ttk.Button(left, text="?? Resetear ronda", command=self.resetear_ronda).pack(pady=6, fill="x")
 
         right = ttk.Frame(self, padding=10)
         right.place(x=450, y=20, width=500, height=700)
 
-        ttk.Label(right, text="📊 Conteo y Probabilidades", font=("Segoe UI", 14, "bold"), foreground="#00CED1").pack(anchor="w")
+        ttk.Label(right, text="?? Conteo y Probabilidades", font=("Segoe UI", 14, "bold"), foreground="#00CED1").pack(anchor="w")
 
         self.table = ttk.Treeview(right, columns=("count", "prob"), show="headings", height=7)
         self.table.heading("count", text="Apuestas")
@@ -65,7 +65,7 @@ class DiceGameApp(tk.Tk):
         for i in range(1, 7):
             self.table.insert("", "end", iid=str(i), values=(0, "0.00%"))
 
-        # 🎲 Dado más bonito
+        # ?? Dado más bonito
         self.dice_canvas = tk.Canvas(right, width=140, height=140, bg="#FAFAFA", highlightthickness=4, highlightbackground="#3A9BDC")
         self.dice_canvas.pack(pady=(20, 12))
         self.dice_dots = []
@@ -77,12 +77,12 @@ class DiceGameApp(tk.Tk):
 
         self.dice_canvas.bind("<Button-1>", lambda e: self.start_roll())
 
-        ttk.Label(right, text="🎲 Resultado:", font=("Segoe UI", 12, "bold"), foreground="#FFD700").pack(anchor="w")
+        ttk.Label(right, text="?? Resultado:", font=("Segoe UI", 12, "bold"), foreground="#FFD700").pack(anchor="w")
         self.result_var = tk.StringVar(value="—")
         self.result_label = ttk.Label(right, textvariable=self.result_var, font=("Segoe UI", 30, "bold"), foreground="#FF6347")
         self.result_label.pack(anchor="center", pady=(4,6))
 
-        ttk.Label(right, text="🏆 Ganadores:", font=("Segoe UI", 12, "bold"), foreground="#32CD32").pack(anchor="w", pady=(8,0))
+        ttk.Label(right, text="?? Ganadores:", font=("Segoe UI", 12, "bold"), foreground="#32CD32").pack(anchor="w", pady=(8,0))
         self.winners_tree = ttk.Treeview(right, columns=("jugador",), show="headings", height=6)
         self.winners_tree.heading("jugador", text="Jugador")
         self.winners_tree.column("jugador", anchor="center", width=250)
@@ -167,9 +167,9 @@ class DiceGameApp(tk.Tk):
         winners = self.apuestas[chosen]
         if winners:
             for w in winners:
-                self.winners_tree.insert("", "end", values=(f"✅ {w}",))
+                self.winners_tree.insert("", "end", values=(f"? {w}",))
         else:
-            self.winners_tree.insert("", "end", values=("❌ No hubo ganadores",))
+            self.winners_tree.insert("", "end", values=("? No hubo ganadores",))
 
 if __name__ == "__main__":
     app = DiceGameApp()
